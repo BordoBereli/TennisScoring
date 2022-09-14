@@ -7,7 +7,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import tr.com.kutluoglu.tennisgame.ui.theme.TennisGameTheme
 
@@ -33,13 +35,16 @@ fun TennisScreen() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    Text(
+        text = "Hello $name!",
+        textAlign = TextAlign.Center,
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TennisGameTheme {
-        Greeting("Android")
+        Greeting("Tennis Game Scoring!!!")
     }
 }
