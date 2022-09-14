@@ -1,8 +1,11 @@
 package tr.com.kutluoglu.tennisgame
 
+import android.graphics.fonts.FontStyle
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -11,6 +14,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import tr.com.kutluoglu.tennisgame.ui.theme.TennisGameTheme
 
 /**
@@ -28,7 +34,12 @@ fun TennisScreen() {
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background
         ) {
-            Greeting("Android")
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Greeting("Tennis Game Scoring!!!")
+            }
         }
     }
 }
@@ -38,6 +49,7 @@ fun Greeting(name: String) {
     Text(
         text = "Hello $name!",
         textAlign = TextAlign.Center,
+        style = MaterialTheme.typography.h3
     )
 }
 
