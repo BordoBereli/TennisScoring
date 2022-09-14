@@ -1,5 +1,7 @@
 package tr.com.kutluoglu.tennisgame
 
+import io.kotest.core.spec.IsolationMode
+import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.spec.style.stringSpec
 import io.kotest.matchers.shouldBe
 import tr.com.kutluoglu.tennisgame.tennis.TennisGame
@@ -9,6 +11,11 @@ import tr.com.kutluoglu.tennisgame.tennis.TennisPlayer
  * Created by F.K. on 12.09.2022.
  *
  */
+
+class TennisGameTest : StringSpec({
+    isolationMode = IsolationMode.InstancePerTest
+    include(tennisGameTest())
+})
 
 fun tennisGameTest() = stringSpec {
     val player1 = TennisPlayer(0)
