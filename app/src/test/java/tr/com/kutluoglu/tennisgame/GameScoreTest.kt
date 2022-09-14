@@ -1,5 +1,6 @@
 package tr.com.kutluoglu.tennisgame
 
+import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.spec.style.stringSpec
 import io.kotest.matchers.shouldBe
 import tr.com.kutluoglu.tennisgame.tennis.GameScore
@@ -10,6 +11,10 @@ import tr.com.kutluoglu.tennisgame.tennis.TennisPlayer
  * Created by F.K. on 13.09.2022.
  *
  */
+
+class GameScoreTest : StringSpec({
+    include(gameScoreTest())
+})
 
 fun gameScoreTest() = stringSpec {
     lateinit var gameScore: GameScore
