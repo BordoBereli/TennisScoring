@@ -50,13 +50,13 @@ fun TennisScreen(
 @Composable
 fun Greeting(uiState: State<TennisScoreState>) {
     val score = uiState.value.score
-    Column(modifier = Modifier.fillMaxSize()) {
-        Text(
-            text = "$score",
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.h4
-        )
-    }
+    Text(
+        text = "Game Score: $score",
+        style = MaterialTheme.typography.h4,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp)
+    )
 }
 
 @Composable
