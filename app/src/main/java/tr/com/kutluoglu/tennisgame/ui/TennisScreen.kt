@@ -12,9 +12,12 @@ import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 import tr.com.kutluoglu.tennisgame.presentation.TennisViewModel
 import tr.com.kutluoglu.tennisgame.ui.TennisScoreState
@@ -36,13 +39,8 @@ fun TennisScreen(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colors.background,
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                TennisPlayingAnimation()
-                Greeting(viewModel.tennisScoreState)
-            }
+            TennisPlayingAnimation()
+            Greeting(viewModel.tennisScoreState)
         }
     }
 }
@@ -52,6 +50,7 @@ fun Greeting(uiState: State<TennisScoreState>) {
     val score = uiState.value.score
     Text(
         text = "Game Score: $score",
+        color = Color.Companion.White,
         style = MaterialTheme.typography.h4,
         modifier = Modifier
             .fillMaxSize()
@@ -63,10 +62,12 @@ fun Greeting(uiState: State<TennisScoreState>) {
 fun TennisPlayingAnimation() {
     GlideImage(
         imageModel = "https://c.tenor.com/UqXeu2y66gIAAAAC/kitty-table-tennis.gif",
+        imageOptions = ImageOptions(
+            contentScale = ContentScale.FillBounds
+        ),
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .padding(4.dp)
-            .height(400.dp)
             .clip(RoundedCornerShape(8.dp))
     )
 }
