@@ -1,2 +1,5 @@
-package tr.com.kutluoglu.tennisgame.ui 
+package tr.com.kutluoglu.tennisgame.ui
 
+data class TennisScoreState(
+    val score: String = ""
+)

@@ -1,36 +1,23 @@
-package tr.com.kutluoglu.tennisgame
+package tr.com.kutluoglu.tennisgame.ui
 
 import android.os.Build
-import android.os.Build.VERSION.SDK_INT
-import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.ComponentRegistry
-import coil.ImageLoader
-import coil.decode.Decoder
-import coil.decode.GifDecoder
-import coil.decode.ImageDecoderDecoder
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
-import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.glide.GlideImage
+import tr.com.kutluoglu.tennisgame.presentation.TennisViewModel
+import tr.com.kutluoglu.tennisgame.ui.TennisScoreState
 import tr.com.kutluoglu.tennisgame.ui.theme.TennisGameTheme
 
 /**
@@ -39,35 +26,41 @@ import tr.com.kutluoglu.tennisgame.ui.theme.TennisGameTheme
  */
 
 @RequiresApi(Build.VERSION_CODES.N)
-@Preview(name = "Light Mode")
 @Composable
-fun TennisScreen() {
+fun TennisScreen(
+    viewModel: TennisViewModel
+) {
     TennisGameTheme {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colors.background
+            color = MaterialTheme.colors.background,
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Greeting("Tennis Game Scoring!!!")
+                TennisPlayingAnimation()
+                Greeting(viewModel.tennisScoreState)
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
+fun Greeting(uiState: State<TennisScoreState>) {
+    val score = uiState.value.score
     Column(modifier = Modifier.fillMaxSize()) {
         Text(
-            text = "Hello\n $name!",
+            text = "$score",
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.h4
         )
-        Spacer(modifier = Modifier.fillMaxSize())
     }
+}
+
+@Composable
+fun TennisPlayingAnimation() {
     GlideImage(
         imageModel = "https://c.tenor.com/UqXeu2y66gIAAAAC/kitty-table-tennis.gif",
         modifier = Modifier
@@ -76,13 +69,12 @@ fun Greeting(name: String) {
             .height(400.dp)
             .clip(RoundedCornerShape(8.dp))
     )
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     TennisGameTheme {
-        Greeting("Tennis Game Scoring!!!")
+//        Greeting(TennisScoreState("Hello Tennis Game Scoring!"))
     }
 }

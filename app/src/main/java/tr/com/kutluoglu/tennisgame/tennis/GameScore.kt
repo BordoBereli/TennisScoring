@@ -5,8 +5,8 @@ class GameScore {
         return when(game.gameStatue) {
             GameStatues.DEUCE -> GameStatues.DEUCE.statue
             GameStatues.ADVANTAGE -> GameStatues.ADVANTAGE.statue
-            GameStatues.PLAYER1WON -> GameStatues.PLAYER1WON.statue
-            GameStatues.PLAYER2WON -> GameStatues.PLAYER2WON.statue
+            GameStatues.PLAYER1WON -> "${GameStatues.PLAYER1WON.statue} -> ${game.player1Points()}-${game.player2Points()}"
+            GameStatues.PLAYER2WON -> "${GameStatues.PLAYER2WON.statue} -> ${game.player2Points()}-${game.player1Points()}"
             else -> "${player1Score(game)}-${player2Score(game)}"
         }
     }

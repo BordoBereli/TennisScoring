@@ -84,12 +84,12 @@ fun gameScoreTest() = stringSpec {
     "should GameScore.show() return Player1 won when player1 have 4 or more points and has more than 2 points differ" {
         game.updatePlayer1ScoreBy(6)
         game.updatePlayer2ScoreBy(4)
-        gameScore.show(game) shouldBe "Player1 won"
+        gameScore.show(game) shouldBe "Player1 won -> 6-4"
     }
 
     "should GameScore.show() return Player2 won when player2 have 4 or more points and has more than 2 points differ" {
         game.updatePlayer1ScoreBy(2)
         game.updatePlayer2ScoreBy(4)
-        gameScore.show(game) shouldBe "Player2 won"
+        gameScore.show(game) shouldBe "Player2 won -> 4-2"
     }
 }
